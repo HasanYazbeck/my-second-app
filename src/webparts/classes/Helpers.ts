@@ -24,7 +24,7 @@ public groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
       const groupKey = key.split('.').reduce((obj, keyPart) => 
         {
         return (obj as any)?.[keyPart]; // Using "as any" to handle dynamic nested access
-      }, item) as unknown as string;;
+      }, item) as unknown as string;
       
       if (groupKey) {
         (groups[groupKey] ||= []).push(item);

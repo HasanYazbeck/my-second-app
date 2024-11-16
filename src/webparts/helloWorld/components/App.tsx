@@ -1,3 +1,7 @@
+
+/* Installing Node.js packages in a production environment without an internet connection */ 
+// https://m4rkux.medium.com/installing-node-js-packages-in-a-production-environment-without-internet-connection-7c4e08446c5d
+
 import * as React from "react";
 
 // Hooks
@@ -15,7 +19,7 @@ import ButtonComponent from "./Button/ButtonComponent";
 import ModalComponent from "./Modal/ModalComponent";
 import CategoriesCard from "./page-components/CategoriesCard";
 import OfferCard from "./page-components/OfferCard";
-import TestimonialsCard from "./page-components/TestimonialsCard";
+// import TestimonialsCard from "./page-components/TestimonialsCard";
 import TestimonialsList from "./Lists/TestimonialsList";
 
 // Styles
@@ -29,12 +33,11 @@ import {DiCss3Full} from "react-icons/di";
 import {PiFileSqlBold}  from "react-icons/pi";
 import {FaMapMarkedAlt , FaFileDownload} from "react-icons/fa";
 import * as siIcons from "react-icons/si";
-import UseEffectHook from "../TestingExamples/UseEffectHookEx";
-
-
+ 
 // Examples
 // import UseStateHookEx from "../TestingExamples/UseStateHookEx";
 // import MyList from "../TestingExamples/MyList";
+// import UseEffectHook from "../TestingExamples/UseEffectHookEx";
 
 export default function App({text,serverRelativeUrl, imagePath }: AppProps) : JSX.Element {
 const [showCourseModal , setShowCourseModal] = useState(false);
@@ -54,9 +57,9 @@ const [showOffers , setShowOffers] = useState(false);
     }
 
     // Offers Handler
-    const handleShowOffers = () : void => {
-      showOffers === false ? setShowOffers(true) : setShowOffers(false);
-    }
+    const handleShowOffers = () : void => (
+      showOffers === false ? setShowOffers(true) : setShowOffers(false)
+    )
 
     // const handleStartLearningEvent = () : void => {window.alert("Hi")};
 
@@ -225,10 +228,8 @@ const [showOffers , setShowOffers] = useState(false);
               <section className={`${styles.testimonial} ${styles.my4}`}>
                 <TitleComponent  baseProps={{text:"What our users say" , classes:`${styles.subtitle} ${styles.textCenter} ${styles.mb4}`}}/>
                 <div className={`${styles.testimonialsContainer}`}>
-                  <TestimonialsList/>
-                  <TestimonialsCard />
+                  <TestimonialsList />
                 </div>
-
               </section>
 
         </main>
@@ -236,7 +237,7 @@ const [showOffers , setShowOffers] = useState(false);
         {/*EXAMPLES*/}
         {/*<UseStateHookEx /> */}
         {/* <MyList /> */}
-        <UseEffectHook/>
+        {/* <UseEffectHook/> */}
 
       </div>
     </>

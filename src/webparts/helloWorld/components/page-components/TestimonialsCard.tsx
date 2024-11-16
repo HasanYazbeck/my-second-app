@@ -5,15 +5,12 @@ import styles from "../../styles/Components.module.scss";
 // Props
 import {TestimonialsCardProps} from '../Props/TestimonialsCardProps';
 
-export default function TestimonialsCard({img , 
-        fullName = "Full Name" , 
-        jobTitle = "Job Title" , 
-        twitterHandle = "Twitter Handle",text="Text" , ratingStars} : TestimonialsCardProps) : JSX.Element {
+export default function TestimonialsCard({img ,fullName = "Full Name" , jobTitle = "Job Title" ,  twitterHandle = "Twitter Handle", text="Text" } : TestimonialsCardProps) : JSX.Element {
 
   return (
     <div className={`${styles.card} ${styles.testimonial} ${styles.inView}`}>
         <div className={`${styles.cardHeader}`}>
-            <div className={`${img}`}></div>
+            <div className={`${img}`}/>
             <div className={`${styles.cardBody}`}>
                 <h3 className={`${styles.cardTitle}`}>{fullName}</h3>
                 <p className={`${styles.cardText}`}>{jobTitle}</p>
@@ -34,5 +31,5 @@ export default function TestimonialsCard({img ,
             <BsStar className={`${styles.mr1}`}/>
         </div>
     </div>
-  )
+  );
 }

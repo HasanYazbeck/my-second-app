@@ -1,17 +1,29 @@
- import {useState} from "react";
+import {useState , useEffect} from "react";
 
  // Data
- import testimonialsData from "../../../db/testimonials";
+import testimonialsData from "../../../db/testimonials";
+
+// Component
 import TestimonialsCard from "../page-components/TestimonialsCard";
 
 export default function TestimonialsList() : JSX.Element {
 
-    const [testimonials, {}] = useState(testimonialsData);
-    console.log(testimonials);
+    const [testimonials, setTestimonials ] = useState(() => 
+    { 
+      // console.log(testimonials);
+      const storedData = localStorage.getItem("testimonialsData");
+      return storedData ? JSON.parse(storedData) : []; 
+    }
+  );
+    
+    useEffect(() =>{
+      setTestimonials(testimonialsData);
+      localStorage.setItem("testimonialsData", JSON.stringify(testimonialsData));
+    } , [testimonialsData])
 
   return (
     <>
-    {testimonialsData.map((item) => (
+    { testimonials && testimonialsData.map((item) => (
         <TestimonialsCard key={item.id} 
                           img={item.img} 
                           fullName={item.fullName} 

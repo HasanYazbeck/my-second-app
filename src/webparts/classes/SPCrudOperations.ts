@@ -7,6 +7,14 @@ import ColumnDefinition from "../interfaces/ColumnDefinition";
 import { FieldTypeKind } from "../Enums/enums";
 import ISPItem from "../interfaces/ISPItem";
 
+type listDefinition = {
+  Title: string,
+  Description: string,
+  AllowContentTypes: boolean,
+  BaseTemplate: number,
+  ContentTypesEnabled: boolean,
+}
+
 export class SPCrudOperations {
   private listName: string;
   private siteUrl: string;
@@ -35,7 +43,7 @@ export class SPCrudOperations {
       }
       if (response.status === 404) {
         const url: string = `${this.siteUrl}/_api/web/lists`;
-        const listDefinition: any = {
+        const listDefinition: listDefinition = {
           Title: listName,
           Description: listDescription,
           AllowContentTypes: true,
