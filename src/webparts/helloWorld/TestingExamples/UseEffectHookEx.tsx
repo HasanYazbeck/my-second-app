@@ -9,18 +9,16 @@ export default function UseEffectHook() : JSX.Element{
     const [count, setCount] = useState(0);
     const [text,setText] = useState(0);
     const [fadeIn, setFadeIn] = useState('');
+    const setCountClicked = () : void =>{ 
+      setCount(count + 1);
+      setFadeIn('');
+    }
 
- 
     useEffect(() : void =>{
         setText(text+3);
         fadeIn === '' && setFadeIn('fade');
       },[count]);
  
-    const setCountClicked = () => { 
-      setCount(count + 1);
-      setFadeIn('');
-    }
-
   return (
     <div style={{height: "40vh"}}>
       <h1 className='title'>UseEffecHook</h1>

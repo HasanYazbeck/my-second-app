@@ -225,7 +225,8 @@ const [showOffers , setShowOffers] = useState(false);
               </section>
 
               {/* Testimonials */}
-              <section className={`${styles.testimonial} ${styles.my4}`}>
+              {/* className={`${styles.testimonial} ${styles.my4}`} */}
+              <section >
                 <TitleComponent  baseProps={{text:"What our users say" , classes:`${styles.subtitle} ${styles.textCenter} ${styles.mb4}`}}/>
                 <div className={`${styles.testimonialsContainer}`}>
                   <TestimonialsList />

@@ -33,6 +33,15 @@ public groupBy<T>(array: T[], key: keyof T): Record<string, T[]> {
     }, {} as Record<string, T[]>);
   }
   
+  public GetImageFullPathByName(image?:string) : string {
+    try{
+      const path = require(`./assets/${image}`);
+      return path && path;
+    }catch(ex){
+      console.error(ex);
+      return ex;
+    }
+  }
 
 }
 
