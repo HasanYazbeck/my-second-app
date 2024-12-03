@@ -21,27 +21,33 @@ import CategoriesCard from "./page-components/CategoriesCard";
 import OfferCard from "./page-components/OfferCard";
 // import TestimonialsCard from "./page-components/TestimonialsCard";
 import TestimonialsList from "./Lists/TestimonialsList";
+import UseRefEx from "../TestingExamples/UseRefEx";
 
 // Styles
 import styles from "../styles/Components.module.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Icons
+import * as siIcons from "react-icons/si";
 import {BsFillSendFill} from "react-icons/bs";
 import {AiFillFileExcel, AiFillHtml5, AiFillPlayCircle, AiFillUnlock, AiOutlineJava} from "react-icons/ai";
 import {DiCss3Full} from "react-icons/di";
 import {PiFileSqlBold}  from "react-icons/pi";
 import {FaMapMarkedAlt , FaFileDownload} from "react-icons/fa";
-import * as siIcons from "react-icons/si";
+
+// import { SPCrudOperations } from "../../classes/SPCrudOperations";
  
 // Examples
 // import UseStateHookEx from "../TestingExamples/UseStateHookEx";
 // import MyList from "../TestingExamples/MyList";
 // import UseEffectHook from "../TestingExamples/UseEffectHookEx";
 
-export default function App({text,serverRelativeUrl, imagePath }: AppProps) : JSX.Element {
+export default function App({text,serverRelativeUrl, imagePath ,webContext}: AppProps) : JSX.Element {
 const [showCourseModal , setShowCourseModal] = useState(false);
 const [showOffers , setShowOffers] = useState(false);
+
+// const select : string = "?$select=LibSubSubLinksTitle,OpenLinkNewWindow,DisplayOrder,Visible,LibSubLinks/Id,LibSubLinks/SubLinkTitle&$expand=LibSubLinks";
+// const spCrudOperation =  new SPCrudOperations(webContext.spHttpClient,serverRelativeUrl,"SharePointListName",select);
 
  // const headerImg = serverRelativeUrl+`/SiteAssets/headerImg.png`; 
     const childrens : React.ReactElement[] = [];
@@ -239,6 +245,7 @@ const [showOffers , setShowOffers] = useState(false);
         {/*<UseStateHookEx /> */}
         {/* <MyList /> */}
         {/* <UseEffectHook/> */}
+          <UseRefEx/>
 
       </div>
     </>

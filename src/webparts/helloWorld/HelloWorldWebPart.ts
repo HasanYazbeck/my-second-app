@@ -15,8 +15,10 @@ export default class HelloWorldWebPart extends BaseClientSideWebPart<{}> {
   public render(): void {
     const siteRelativeUrl  : string = this.context.pageContext.web.serverRelativeUrl;
     const element: React.ReactElement<AppProps> = React.createElement(App,{
+      webContext: this.context,
       serverRelativeUrl:siteRelativeUrl,
       imagePath :require('./assets/headerImg.png'),
+      
     });
     ReactDom.render(element, this.domElement);
   }

@@ -16,11 +16,11 @@ export default function UseEffectHook() : JSX.Element{
 
     useEffect(() : void =>{
         setText(text+3);
-        fadeIn === '' && setFadeIn('fade');
+         fadeIn === '' && setFadeIn('fade');
       },[count]);
  
   return (
-    <div style={{height: "40vh"}}>
+    <div style={{height: '40vh'}}>
       <h1 className='title'>UseEffecHook</h1>
       <h2 className='subtitle'>{`You clicked ${text} times`}</h2>
       <p className={`card card-warning bg-danger text-light p-1 ${fadeIn}`}> You Clicked {count}

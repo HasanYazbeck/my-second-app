@@ -4,5 +4,5 @@ export type TestimonialsCardProps = {
     jobTitle?:string;
     twitterHandle? : string;
     text?:string;
-    ratingStars?:string;
+    ratingStars?: number;
 }

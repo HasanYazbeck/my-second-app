@@ -2,10 +2,10 @@ import {
   SPHttpClient,
   SPHttpClientResponse,
   ISPHttpClientOptions,
-} from "@microsoft/sp-http-base";
-import ColumnDefinition from "../interfaces/ColumnDefinition";
-import { FieldTypeKind } from "../Enums/enums";
-import ISPItem from "../interfaces/ISPItem";
+} from '@microsoft/sp-http-base';
+import ColumnDefinition from '../interfaces/ColumnDefinition';
+import { FieldTypeKind } from '../Enums/enums';
+import ISPItem from '../interfaces/ISPItem';
 
 type listDefinition = {
   Title: string,
@@ -38,7 +38,7 @@ export class SPCrudOperations {
       );
 
       if (response.status === 200) {
-        alert("A List already exists with this name.");
+        alert('A List already exists with this name.');
         return;
       }
       if (response.status === 404) {
@@ -62,13 +62,13 @@ export class SPCrudOperations {
           );
 
         if (createResponse.status === 201) {
-          alert("A new List has been created successfully.");
+          alert('A new List has been created successfully.');
         } else {
           const responseJson: JSON = await createResponse.json();
           alert(
-            "Error Message" +
+            'Error Message' +
               response.status +
-              " - " +
+              ' - ' +
               JSON.stringify(responseJson)
           );
         }
@@ -76,14 +76,14 @@ export class SPCrudOperations {
         const responseJson: JSON = await response.json();
 
         alert(
-          "Error Message" +
+          'Error Message' +
             response.status +
-            " - " +
+            ' - ' +
             JSON.stringify(responseJson)
         );
       }
     } catch (error) {
-      console.error("Error creating item:", error);
+      console.error('Error creating item:', error);
       throw error;
     }
   }
@@ -111,13 +111,13 @@ export class SPCrudOperations {
         spHttpClientOptions
       );
       if (response.status === 201) {
-        alert("Column added successfully.");
+        alert('Column added successfully.');
       } else {
         const responseJson = await response.json();
-        alert("Error adding column: " + JSON.stringify(responseJson));
+        alert('Error adding column: ' + JSON.stringify(responseJson));
       }
     } catch (error) {
-      console.error("Error adding column:", error);
+      console.error('Error adding column:', error);
       throw error;
     }
   }
@@ -132,19 +132,19 @@ export class SPCrudOperations {
         SPHttpClient.configurations.v1,
         {
           headers: {
-            "X-HTTP-Method": "DELETE",
-            "IF-MATCH": "*",
+            'X-HTTP-Method': 'DELETE',
+            'IF-MATCH': '*',
           },
         }
       );
       if (response.status === 204) {
-        alert("Column deleted successfully.");
+        alert('Column deleted successfully.');
       } else {
         const responseJson = await response.json();
-        alert("Error deleting column: " + JSON.stringify(responseJson));
+        alert('Error deleting column: ' + JSON.stringify(responseJson));
       }
     } catch (error) {
-      console.error("Error deleting column:", error);
+      console.error('Error deleting column:', error);
       throw error;
     }
   }
@@ -165,23 +165,23 @@ export class SPCrudOperations {
 
       if (response.status === 201) {
         //the item is created for response code 201
-        alert("A new Item inserted successfully.");
+        alert('A new Item inserted successfully.');
       } else {
         const responseJson = await response.json();
         alert(
-          "Error Message : " +
+          'Error Message : ' +
             response.status +
-            " - " +
+            ' - ' +
             JSON.stringify(responseJson)
         );
       }
     } catch (error) {
-      console.error("Error creating item:", error);
+      console.error('Error creating item:', error);
       throw error;
     }
   }
 
-  //Get Items List by Filter
+  //Get Items List 
   public async _getItems(): Promise<any[]> {
     const url: string = `${this.siteUrl}/_api/web/lists/getbytitle('${this.listName}')/items`;
 
@@ -192,22 +192,22 @@ export class SPCrudOperations {
       );
       if (response.status === 200) {
         const responseData: any = await response.json();
-        // console.log("Items retrieved successfully:", responseData.value);
+        // console.log('Items retrieved successfully:', responseData.value);
         return responseData.value;
       } else {
         const responseError: any = await response.json();
         console.log(`Error retrieving items. Status: ${responseError.status}`,responseError);
-        // alert("Error Message" + JSON.stringify(responseError));
+        // alert('Error Message' + JSON.stringify(responseError));
         throw new Error(`Error retrieving items. Status: ${responseError.status}`
         );
       }
     } catch (error) {
-      console.error("Error Retreiving Items", error);
+      console.error('Error Retreiving Items', error);
       throw error;
     }
   }
 
-  //Get Items List
+  //Get Items List by Filter
   public async _getItemsbyFilter(): Promise<any[]> {
     const url: string = `${this.siteUrl}/_api/web/lists/getbytitle('${this.listName}')/items/${this.select}`;
 
@@ -218,17 +218,17 @@ export class SPCrudOperations {
       );
       if (response.status === 200) {
         const responseData: any = await response.json();
-        // console.log("Items retrieved successfully:", responseData.value);
+        // console.log('Items retrieved successfully:', responseData.value);
         return responseData.value;
       } else {
         const responseError: any = await response.json();
         console.log(`Error retrieving items. Status: ${responseError.status}`,responseError);
-        // alert("Error Message" + JSON.stringify(responseError));
+        // alert('Error Message' + JSON.stringify(responseError));
         throw new Error(`Error retrieving items. Status: ${responseError.status}`
         );
       }
     } catch (error) {
-      console.error("Error Retreiving Items", error);
+      console.error('Error Retreiving Items', error);
       throw error;
     }
   }
@@ -248,7 +248,7 @@ export class SPCrudOperations {
           return listItem;
         }) as Promise<ISPItem>;
     } catch (error) {
-      console.error("Error Retreiving Item", error);
+      console.error('Error Retreiving Item', error);
       throw error;
     }
   }
@@ -258,8 +258,8 @@ export class SPCrudOperations {
     const url: string = `${this.siteUrl}/_api/web/lists/getbytitle('${this.listName}')/items(${itemId})`;
     const spHttpClientOptions: ISPHttpClientOptions = {
       headers: {
-        "X-HTTP-Method": "MERGE",
-        "IF-MATCH": "*",
+        'X-HTTP-Method': 'MERGE',
+        'IF-MATCH': '*',
       },
       body: JSON.stringify(item),
     };
@@ -270,7 +270,7 @@ export class SPCrudOperations {
         spHttpClientOptions
       );
       if (response.ok) {
-        console.log("Item updated successfully");
+        console.log('Item updated successfully');
         return response;
       } else {
         const errorResponse: any = await response.json();
@@ -281,7 +281,7 @@ export class SPCrudOperations {
         throw new Error(`Error updating item. Status: ${response.status}`);
       }
     } catch (error) {
-      console.error("Error updating item:", error);
+      console.error('Error updating item:', error);
       throw error;
     }
   }
@@ -291,8 +291,8 @@ export class SPCrudOperations {
     const url: string = `${this.siteUrl}/_api/web/lists/getbytitle('${this.listName}')/items(${itemId})`;
     const spHttpClientOptions: ISPHttpClientOptions = {
       headers: {
-        "X-HTTP-Method": "DELETE",
-        "IF-MATCH": "*",
+        'X-HTTP-Method': 'DELETE',
+        'IF-MATCH': '*',
       },
     };
 
@@ -303,7 +303,7 @@ export class SPCrudOperations {
         spHttpClientOptions
       );
       if (response.ok) {
-        console.log("Item deleted successfully");
+        console.log('Item deleted successfully');
       } else {
         const errorResponse: any = await response.json();
         console.error(
@@ -313,7 +313,7 @@ export class SPCrudOperations {
         throw new Error(`Error deleting item. Status: ${response.status}`);
       }
     } catch (error) {
-      console.error("Error deleting item:", error);
+      console.error('Error deleting item:', error);
       throw error;
     }
   }
